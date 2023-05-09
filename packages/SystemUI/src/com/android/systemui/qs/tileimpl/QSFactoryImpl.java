@@ -126,6 +126,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<AntiFlickerTile> mAntiFlickerTileProvider;
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
     private final Provider<VolumeTile> mVolumeTileProvider;
+    private final Provider<SoundTile> mSoundTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
     private final Provider<CustomTile.Builder> mCustomTileBuilderProvider;
@@ -176,7 +177,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<ReadingModeTile> readingModeTileProvider,
             Provider<AntiFlickerTile> antiFlickerTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
-            Provider<VolumeTile> volumeTileProvider) {
+            Provider<VolumeTile> volumeTileProvider,
+            Provider<SoundTile> soundTileProvider) {
         mQsHostLazy = qsHostLazy;
         mCustomTileBuilderProvider = customTileBuilderProvider;
 
@@ -223,6 +225,7 @@ public class QSFactoryImpl implements QSFactory {
         mAntiFlickerTileProvider = antiFlickerTileProvider;
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mVolumeTileProvider = volumeTileProvider;
+        mSoundTileProvider = soundTileProvider;
     }
 
     /** Creates a tile with a type based on {@code tileSpec} */
@@ -324,7 +327,9 @@ public class QSFactoryImpl implements QSFactory {
             case "dataswitch":
                 return mDataSwitchTileProvider.get();
             case "volume_panel":
-                return mVolumeTileProvider.get();    
+                return mVolumeTileProvider.get(); 
+            case "sound":
+                return mSoundTileProvider.get();    
         }
         // Custom tiles
         if (tileSpec.startsWith(CustomTile.PREFIX)) {

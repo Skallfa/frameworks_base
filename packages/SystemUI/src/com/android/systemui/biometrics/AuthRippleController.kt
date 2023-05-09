@@ -90,6 +90,10 @@ class AuthRippleController @Inject constructor(
     private var udfpsController: UdfpsController? = null
     private var udfpsRadius: Float = -1f
     private var unlockAnimationEnabled: Boolean = true
+        
+    private val isRippleDisabled: Boolean
+        get() = Settings.System.getInt(context.contentResolver,
+            Settings.System.DISABLE_RIPPLE_EFFECT, 0) == 1    
 
     override fun onInit() {
         mView.setAlphaInDuration(sysuiContext.resources.getInteger(
@@ -168,6 +172,7 @@ class AuthRippleController @Inject constructor(
         if (!unlockAnimationEnabled){
             return
         }
+        if (isRippleDisabled) return
         notificationShadeWindowController.setForcePluginOpen(true, this)
 
         // This code path is not used if the KeyguardTransitionRepository is managing the light
@@ -193,6 +198,15 @@ class AuthRippleController @Inject constructor(
 
     override fun onKeyguardFadingAwayChanged() {
         if (featureFlags.isEnabled(Flags.LIGHT_REVEAL_MIGRATION)) {
+            return
+        }
+        
+        if (isRippleDisabled) {
+            // reset and hide the scrim so it doesn't appears on
+            // the next notification shade usage
+            val lightRevealScrim = centralSurfaces.lightRevealScrim
+            lightRevealScrim?.revealAmount = 1f
+            startLightRevealScrimOnKeyguardFadingAway = false
             return
         }
 

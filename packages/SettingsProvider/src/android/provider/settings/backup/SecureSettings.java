@@ -220,6 +220,7 @@ public class SecureSettings {
         Settings.Secure.BLUETOOTH_LE_BROADCAST_CODE,
         Settings.Secure.BLUETOOTH_LE_BROADCAST_APP_SOURCE_NAME,
         Settings.Secure.QUICK_SETTINGS_TILES_VIBRATE,
-        Settings.Secure.SHOW_WIFI_STANDARD_ICON
+        Settings.Secure.SHOW_WIFI_STANDARD_ICON,
+        Settings.Secure.IGNORE_AUTH_CONFIRMATION,
     };
 }

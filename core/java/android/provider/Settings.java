@@ -5692,6 +5692,13 @@ public final class Settings {
          */
         public static final String HIGH_TOUCH_SENSITIVITY_ENABLE =
                 "high_touch_sensitivity_enable";
+	    
+	/**
+         * Whether Proximity on Wake is Enabled or not
+         * @hide
+         */
+        @Readable
+        public static final String PROXIMITY_ON_WAKE = "proximity_on_wake";    
 
         /**
          * Whether the HighTouchPollingRate is activated or not.
@@ -6158,6 +6165,67 @@ public final class Settings {
          * @hide
          */
         public static final String SHOW_FOURG_ICON = "show_fourg_icon";
+	    
+	/**
+         * Whether to disable the ripple animation on fingerprint unlock
+         *
+         * @hide
+         */
+        public static final String DISABLE_RIPPLE_EFFECT = "disable_ripple_effect";
+	    
+	/**
+         * Whether to show charging animation
+         * @hide
+         */
+        public static final String CHARGING_ANIMATION = "charging_animation";
+	    
+	/**
+         * Statusbar clock background
+         * 0 - hide accented chip
+         * 1 - show accented chip (default)
+         * @hide
+         */
+        public static final String STATUSBAR_CLOCK_CHIP ="statusbar_clock_chip";
+	    
+	/**
+         * reTicker Status
+         * @hide
+         */
+        public static final String RETICKER_STATUS = "reticker_status";
+	    
+        /**
+         * reTicker Colored
+         * @hide
+         */
+        public static final String RETICKER_COLORED = "reticker_colored";
+
+        /**
+         * Only enable reTicker in landscape mode
+         * @hide
+         */
+        public static final String RETICKER_LANDSCAPE_ONLY = "reticker_landscape_only";
+	    
+	/**
+         * Whether to show the kill app button in notification guts
+         * @hide
+         */
+        public static final String NOTIFICATION_GUTS_KILL_APP_BUTTON =
+                "notification_guts_kill_app_button";
+
+        /**
+         * Toast icon
+         * @hide
+         */
+        @Readable
+        public static final String TOAST_ICON = "toast_icon";
+	    
+	/**
+         * Whether to play notification sound and vibration if screen is ON
+         * 0 - never
+         * 1 - always
+         * @hide
+         */
+        public static final String NOTIFICATION_SOUND_VIB_SCREEN_ON = "notification_sound_vib_screen_on";    
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
@@ -6285,6 +6353,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DESKTOP_MODE);
             PRIVATE_SETTINGS.add(POCKET_JUDGE);
 	    PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
+            PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_CHIP);		
         }
         /**
          * These entries are considered common between the personal and the managed profile,
@@ -10693,6 +10762,24 @@ public final class Settings {
         @Readable
         public static final String NIGHT_DISPLAY_LAST_ACTIVATED_TIME =
                 "night_display_last_activated_time";
+	    
+	/**
+         * Display color balance for the red channel, from 0 to 255.
+         * @hide
+         */
+        public static final String DISPLAY_COLOR_BALANCE_RED = "display_color_balance_red";
+
+        /**
+         * Display color balance for the green channel, from 0 to 255.
+         * @hide
+         */
+        public static final String DISPLAY_COLOR_BALANCE_GREEN = "display_color_balance_green";
+
+        /**
+         * Display color balance for the blue channel, from 0 to 255.
+         * @hide
+         */
+        public static final String DISPLAY_COLOR_BALANCE_BLUE = "display_color_balance_blue";    
 
         /**
          * Control whether display white balance is currently enabled.
@@ -11316,6 +11403,13 @@ public final class Settings {
          */
         @Readable
         public static final String TAP_GESTURE = "tap_gesture";
+	    
+	/**
+         * Whether to skip biometric auth confirmation
+         * @hide
+         */
+        @Readable
+        public static final String IGNORE_AUTH_CONFIRMATION = "ignore_auth_confirmation";    
 
         /**
          * Controls whether the people strip is enabled.
@@ -11520,6 +11614,12 @@ public final class Settings {
          * @hide
          */
         public static final String ADAPTIVE_CONNECTIVITY_ENABLED = "adaptive_connectivity_enabled";
+	    
+	/**
+         * Boolean value whether to link ringtone and notification volume
+         * @hide
+         */
+        public static final String VOLUME_LINK_NOTIFICATION = "volume_link_notification";    
 
         /**
          * Whether to show media art on lockscreen

@@ -174,8 +174,6 @@ import android.speech.RecognizerIntent;
 import android.telecom.TelecomManager;
 import android.text.TextUtils;
 import android.util.Log;
-import android.text.TextUtils;
-import android.text.TextUtils;
 import android.util.MutableBoolean;
 import android.util.PrintWriterPrinter;
 import android.util.Slog;

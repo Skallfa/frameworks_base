@@ -138,4 +138,6 @@ interface IPowerManager
     void setKeyboardVisibility(boolean visible);
     void rebootCustom(boolean confirm, String reason, boolean wait);
 
+    // Lineage custom API
+    void wakeUpWithProximityCheck(long time, int reason, String details, String opPackageName);
 }

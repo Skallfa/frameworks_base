@@ -6225,7 +6225,19 @@ public final class Settings {
          * 1 - always
          * @hide
          */
-        public static final String NOTIFICATION_SOUND_VIB_SCREEN_ON = "notification_sound_vib_screen_on";    
+        public static final String NOTIFICATION_SOUND_VIB_SCREEN_ON = "notification_sound_vib_screen_on";
+	    
+	/**
+         * Whether to play the camera shutter sound on taking a screenshot.
+         * @hide
+         */
+        public static final String SCREENSHOT_SHUTTER_SOUND = "screenshot_shutter_sound";
+	    
+	/**
+         * Screen attention
+         * @hide
+         */
+        public static final String ADAPTIVE_SLEEP = "adaptive_sleep";    
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to

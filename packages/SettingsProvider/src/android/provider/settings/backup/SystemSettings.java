@@ -92,5 +92,6 @@ public class SystemSettings {
         Settings.System.QS_LAYOUT,
         Settings.System.QQS_LAYOUT,
         Settings.System.DISABLE_RIPPLE_EFFECT,
+        Settings.System.COMBINED_STATUS_BAR_SIGNAL_ICONS,
     };
 }

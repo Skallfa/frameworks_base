@@ -6237,7 +6237,13 @@ public final class Settings {
          * Screen attention
          * @hide
          */
-        public static final String ADAPTIVE_SLEEP = "adaptive_sleep";    
+        public static final String ADAPTIVE_SLEEP = "adaptive_sleep";
+	    
+	/**
+         * Whether to show the battery info on the lockscreen while charging
+         * @hide
+         */
+        public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";    
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to

@@ -16,36 +16,13 @@
 
 package com.android.systemui.flags
 
-import android.content.Context;
-import android.content.ContentResolver;
-import android.os.UserHandle;
-import android.provider.Settings;
 import android.util.Dumpable
-import android.util.FeatureFlagUtils;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.android.systemui.dagger.SysUISingleton;
-
-import javax.inject.Inject;
 
 /**
  * Class to manage simple DeviceConfig-based feature flags.
  *
  * See [Flags] for instructions on defining new flags.
  */
-
-@SysUISingleton
-public class FeatureFlags {
-    private final FlagReader mFlagReader;
-    private final Context mContext;
-
-    @Inject
-    public FeatureFlags(FlagReader flagReader, Context context) {
-        mFlagReader = flagReader;
-        mContext = context;
-    }
-    
 interface FeatureFlags : FlagListenable, Dumpable {
     /** Returns a boolean value for the given flag.  */
     fun isEnabled(flag: UnreleasedFlag): Boolean
@@ -70,11 +47,4 @@ interface FeatureFlags : FlagListenable, Dumpable {
 
     /** Returns an int value for a given flag/ */
     fun getInt(flag: ResourceIntFlag): Int
-    
-    /** Whether or not to use the provider model behavior for the status bar icons */
-    public boolean isCombinedStatusBarSignalIconsEnabled() {
-        return Settings.System.getIntForUser(mContext.getContentResolver(),
-            Settings.System.COMBINED_STATUS_BAR_SIGNAL_ICONS, 0,
-            UserHandle.USER_CURRENT) == 1;
-    }
 }

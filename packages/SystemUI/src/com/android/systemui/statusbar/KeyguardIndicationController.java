@@ -968,6 +968,8 @@ public class KeyguardIndicationController {
         }
         
         String batteryInfo = "";
+        int current = 0;
+        double voltage = 0;
         boolean showbatteryInfo = Settings.System.getIntForUser(mContext.getContentResolver(),
             Settings.System.LOCKSCREEN_BATTERY_INFO, 1, UserHandle.USER_CURRENT) == 1;
          if (showbatteryInfo) {

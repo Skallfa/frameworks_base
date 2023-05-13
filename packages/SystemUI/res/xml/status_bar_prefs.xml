@@ -61,6 +61,7 @@
 
     <!-- nfc -->
     <com.android.systemui.tuner.StatusBarSwitch
+        android:icon="@drawable/ic_statusbar_nfc"                                        
         android:key="nfc"
         android:persistent="false"
         android:title="@string/status_bar_nfc" />
@@ -144,6 +145,7 @@
         sysui:defValue="false" />
 
     <com.android.systemui.tuner.StatusBarSwitch
+        android:icon="@drawable/ic_statusbar_volte"                                        
         android:key="ims"
         android:title="@string/status_bar_ims" />
 

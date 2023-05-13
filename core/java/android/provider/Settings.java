@@ -6234,12 +6234,6 @@ public final class Settings {
         public static final String SCREENSHOT_SHUTTER_SOUND = "screenshot_shutter_sound";
 	    
 	/**
-         * Screen attention
-         * @hide
-         */
-        public static final String ADAPTIVE_SLEEP = "adaptive_sleep";
-	    
-	/**
          * Whether to show the battery info on the lockscreen while charging
          * @hide
          */

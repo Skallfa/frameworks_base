@@ -6365,8 +6365,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DESKTOP_MODE);
             PRIVATE_SETTINGS.add(POCKET_JUDGE);
 	    PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
-            PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_CHIP);
-            PRIVATE_SETTINGS.add(COMBINED_STATUS_BAR_SIGNAL_ICONS);		
+            PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_CHIP);		
         }
         /**
          * These entries are considered common between the personal and the managed profile,

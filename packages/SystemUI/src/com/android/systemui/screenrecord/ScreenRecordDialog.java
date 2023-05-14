@@ -68,6 +68,7 @@ public class ScreenRecordDialog extends SystemUIDialog {
     private static final long DELAY_MS = 3000;
     private static final long NO_DELAY = 100; 	
     private static final long INTERVAL_MS = 1000;
+    private static final String TAG = "ScreenRecordDialog";	
     private static final String PREFS = "screenrecord_";
     private static final String PREF_TAPS = "show_taps";
     private static final String PREF_DOT = "show_dot";
@@ -106,6 +107,7 @@ public class ScreenRecordDialog extends SystemUIDialog {
         mDialogLaunchAnimator = dialogLaunchAnimator;
         mFlags = flags;
         mOnStartRecordingClicked = onStartRecordingClicked;
+	mUserContext = mUserContextProvider.getUserContext();    
     }
 
     @Override

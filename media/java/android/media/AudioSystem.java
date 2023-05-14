@@ -1714,6 +1714,13 @@ public class AudioSystem
         return getDeviceMaskFromSet(generateAudioDeviceTypesSet(
                 getDevicesForAttributes(attr, true /* forVolume */)));
     }
+    
+    /** @hide */
+    public static native int setAppVolume(@NonNull String packageName, float volume);
+    /** @hide */
+    public static native int setAppMute(@NonNull String packageName, boolean mute);
+    /** @hide */
+    public static native int listAppVolumes(ArrayList<AppVolume> volumes);
 
     /** @hide
      * Conversion from a device set to a bit mask.

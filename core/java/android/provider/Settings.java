@@ -6243,7 +6243,13 @@ public final class Settings {
          * Whether to show the battery info on the lockscreen while charging
          * @hide
          */
-        public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";  
+        public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";
+	    
+	/**
+         * Force full screen for devices with cutout
+         * @hide
+         */
+        public static final String FORCE_FULLSCREEN_CUTOUT_APPS = "force_full_screen_cutout_apps";    
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
@@ -6371,7 +6377,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DESKTOP_MODE);
             PRIVATE_SETTINGS.add(POCKET_JUDGE);
 	    PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
-            PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_CHIP);		
+            PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_CHIP);
+            PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);		
         }
         /**
          * These entries are considered common between the personal and the managed profile,

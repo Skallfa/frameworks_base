@@ -52,7 +52,9 @@
             android:paddingStart="@dimen/status_bar_clock_starting_padding"
             android:paddingEnd="@dimen/status_bar_clock_end_padding"
             android:gravity="center_vertical|start"
+            android:layout_gravity="center_vertical"                                         
             android:visibility="gone"
+            systemui:isStatusBar="true"                                         
         />
     </com.android.keyguard.AlphaOptimizedLinearLayout>
 </LinearLayout>

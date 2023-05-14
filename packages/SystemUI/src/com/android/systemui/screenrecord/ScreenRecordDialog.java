@@ -80,6 +80,7 @@ public class ScreenRecordDialog extends SystemUIDialog {
 
     private final RecordingController mController;
     private final UserContextProvider mUserContextProvider;
+    private final Context mUserContext;	
     @Nullable
     private final Runnable mOnStartRecordingClicked;
     private final ActivityStarter mActivityStarter;

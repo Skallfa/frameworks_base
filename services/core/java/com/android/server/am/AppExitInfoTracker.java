@@ -354,6 +354,9 @@ public final class AppExitInfoTracker {
 
     /** Calls when zygote sends us SIGCHLD */
     void handleZygoteSigChld(int pid, int uid, int status) {
+        // perform killProcessQuiet first before terminating the process group,
+        // this is similar to how PhantomProcessRecord terminates forked processes
+        Process.killProcessQuiet(pid);
         if (DEBUG_PROCESSES) {
             Slog.i(TAG, "Got SIGCHLD from zygote: pid=" + pid + ", uid=" + uid
                     + ", status=" + Integer.toHexString(status));

@@ -10,8 +10,7 @@
     <dimen name="udfps_animation_size">280dp</dimen>
     <dimen name="udfps_animation_offset">0dp</dimen>
 	
-    <!-- Volume app icon -->  
-    <dimen name="volume_app_icon_max_size">108dp</dimen>
+   
 
     <!-- Tri-state UI -->
     <dimen name="tri_state_down_dialog_position">850.0px</dimen>

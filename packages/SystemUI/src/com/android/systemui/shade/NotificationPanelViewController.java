@@ -232,6 +232,7 @@ import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
 import com.android.systemui.statusbar.phone.StatusBarTouchableRegionManager;
 import com.android.systemui.statusbar.phone.TapAgainViewController;
 import com.android.systemui.statusbar.phone.UnlockedScreenOffAnimationController;
+import com.android.systemui.statusbar.policy.GameSpaceManager;
 import com.android.systemui.statusbar.phone.dagger.CentralSurfacesComponent;
 import com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment;
 import com.android.systemui.statusbar.policy.ConfigurationController;
@@ -6633,9 +6634,12 @@ public final class NotificationPanelViewController implements Dumpable {
             RetickerAnimations.revealAnimation(mReTickerComeback);
             if (reTickerIntent != null) {
                 mReTickerComeback.setOnClickListener(v -> {
-                    try {
-                        reTickerIntent.send();
-                } catch (PendingIntent.CanceledException e) {
+                   final GameSpaceManager gameSpace = mCentralSurfaces.getGameSpaceManager();
+                    if (gameSpace == null || !gameSpace.isGameActive()) {
+                        try {
+                            reTickerIntent.send();
+                        } catch (PendingIntent.CanceledException e) {
+                        }
                     }
                     RetickerAnimations.revealAnimationHide(mReTickerComeback, mNotificationStackScroller);
                     reTickerViewVisibility();

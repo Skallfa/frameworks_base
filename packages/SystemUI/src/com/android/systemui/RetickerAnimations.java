@@ -8,7 +8,6 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.BounceInterpolator;
 import android.view.View;
 
-
 public class RetickerAnimations {
 
     static boolean mIsAnimatingTicker;

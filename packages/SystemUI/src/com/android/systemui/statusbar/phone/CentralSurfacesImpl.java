@@ -231,6 +231,7 @@ import com.android.systemui.statusbar.phone.ongoingcall.OngoingCallController;
 import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.statusbar.policy.BrightnessMirrorController;
 import com.android.systemui.statusbar.policy.ConfigurationController;
+import com.android.systemui.statusbar.policy.GameSpaceManager;
 import com.android.systemui.statusbar.policy.ConfigurationController.ConfigurationListener;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController.DeviceProvisionedListener;
@@ -511,6 +512,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
     private final StatusBarHideIconsForBouncerManager mStatusBarHideIconsForBouncerManager;
     private final Lazy<LightRevealScrimViewModel> mLightRevealScrimViewModelLazy;
     private final TunerService mTunerService;
+    
+    protected GameSpaceManager mGameSpaceManager;
 
     /** Controller for the Shade. */
     @VisibleForTesting
@@ -881,6 +884,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
 
         mActivityIntentHelper = new ActivityIntentHelper(mContext);
         mActivityLaunchAnimator = activityLaunchAnimator;
+        mGameSpaceManager = new GameSpaceManager(mContext, mKeyguardStateController);
 
         // The status bar background may need updating when the ongoing call status changes.
         mOngoingCallController.addCallback((animate) -> maybeUpdateBarMode());
@@ -1508,6 +1512,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction(Intent.ACTION_SCREEN_CAMERA_GESTURE);
         mBroadcastDispatcher.registerReceiver(mBroadcastReceiver, filter, null, UserHandle.ALL);
+        mGameSpaceManager.observe();
     }
 
     protected QS createDefaultQSFragment() {
@@ -4207,6 +4212,11 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
         } else if (DISPLAY_CUTOUT_HIDDEN.equals(key)) {
             updateCutoutOverlay(TunerService.parseIntegerSwitch(newValue, false));
         }
+    }
+    
+    @Override
+    public GameSpaceManager getGameSpaceManager() {
+        return mGameSpaceManager;
     }
 
     // End Extra BaseStatusBarMethods.

@@ -224,7 +224,7 @@ public class NavigationBarInflaterView extends FrameLayout
             mIsHintEnabledRef.compareAndSet(mIsHintEnabledOld, TunerService.parseIntegerSwitch(newValue, true));
             updateHint();
             onLikelyDefaultLayoutChange();
-        }
+        
         } else if (mIsAttachedToWindow &&
                 mNavBarMode == NAV_BAR_MODE_GESTURAL && KEY_NAVIGATION_SPACE.equals(key)) {
             int state = TunerService.parseInteger(newValue, 0);

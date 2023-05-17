@@ -249,8 +249,9 @@ public class NavigationBarInflaterView extends FrameLayout
             }
         if (QuickStepContract.isGesturalMode(mNavBarMode)) {
             setNavigationBarLayout(newValue);
-        }
+       }
     }
+ }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {

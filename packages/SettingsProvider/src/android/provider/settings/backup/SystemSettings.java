@@ -92,6 +92,5 @@ public class SystemSettings {
         Settings.System.QS_LAYOUT,
         Settings.System.QQS_LAYOUT,
         Settings.System.DISABLE_RIPPLE_EFFECT,
-        Settings.System.NAVIGATION_BAR_IME_SPACE,
     };
 }

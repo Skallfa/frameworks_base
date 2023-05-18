@@ -204,6 +204,7 @@ public class QSPanel extends LinearLayout implements Tunable {
             removeView(mBrightnessView);
             mMovableContentStartIndex--;
         }
+        mBrightnessView = view;
         mAutoBrightnessView = view.findViewById(R.id.brightness_icon);
         setBrightnessViewMargin(mTop);
         if (mBrightnessView != null) {
@@ -225,6 +226,7 @@ public class QSPanel extends LinearLayout implements Tunable {
                         .getDimensionPixelSize(R.dimen.qs_bottom_brightness_margin_top);
                 lp.bottomMargin = 0;
             }
+            mBrightnessView.setLayoutParams(lp);
         }
     }
 

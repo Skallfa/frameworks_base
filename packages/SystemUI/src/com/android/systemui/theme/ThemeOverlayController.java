@@ -519,10 +519,6 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
                     }
                 },
                 UserHandle.USER_ALL);
-
-        if (!mIsMonetEnabled) {
-            return;
-        }
         
         mSystemSettings.registerContentObserverForUser(
                 Settings.System.getUriFor(Settings.System.HIDE_IME_SPACE_ENABLE),
@@ -535,6 +531,10 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
                     }
                 },
                 UserHandle.USER_ALL);
+
+        if (!mIsMonetEnabled) {
+            return;
+        }
 
         mUserTracker.addCallback(mUserTrackerCallback, mMainExecutor);
 

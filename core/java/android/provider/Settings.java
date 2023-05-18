@@ -6252,14 +6252,6 @@ public final class Settings {
         public static final String FORCE_FULLSCREEN_CUTOUT_APPS = "force_full_screen_cutout_apps";
 	    
 	/**
-         * Gesture navbar IME space.
-         * Supported modes: 0 for normal length, 1 for narrow and 2 for hidden.
-         * Default 0.
-         * @hide
-         */
-        public static final String NAVIGATION_BAR_IME_SPACE = "navigation_bar_ime_space";
-	    
-	/**
          * GameSpace: List of added games by user
          * @hide
          */

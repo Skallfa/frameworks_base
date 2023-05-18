@@ -6392,8 +6392,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(POCKET_JUDGE);
 	    PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
             PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_CHIP);
-            PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);
-            PRIVATE_SETTINGS.add(NAVIGATION_BAR_IME_SPACE);		
+            PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);		
         }
         /**
          * These entries are considered common between the personal and the managed profile,

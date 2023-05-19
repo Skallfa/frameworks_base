@@ -80,10 +80,6 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
     private static final int IMS_TYPE_WWAN = 1;
     private static final int IMS_TYPE_WLAN = 2;
     private static final int IMS_TYPE_WLAN_CROSS_SIM = 3;
-	
-	private static final String DATA_DISABLED_ICON =
-            "system:" + Settings.System.DATA_DISABLED_ICON;
-	
     private final TelephonyManager mPhone;
     private final CarrierConfigTracker mCarrierConfigTracker;
     private final ImsMmTelManager mImsMmTelManager;
@@ -255,9 +251,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
 
         mImsMmTelManager = ImsMmTelManager.createForSubscriptionId(info.getSubscriptionId());
         mMobileStatusTracker = mobileStatusTrackerFactory.createTracker(mMobileCallback);
-	mProviderModelBehavior = featureFlags.isEnabled(Flags.COMBINED_STATUS_BAR_SIGNAL_ICONS);
-	    
-	Dependency.get(TunerService.class).addTunable(this, DATA_DISABLED_ICON);    
+	mProviderModelBehavior = featureFlags.isEnabled(Flags.COMBINED_STATUS_BAR_SIGNAL_ICONS);   
 
 	Handler mHandler = new Handler();
         SettingsObserver settingsObserver = new SettingsObserver(mHandler);
@@ -273,6 +267,9 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
             resolver.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.SHOW_FOURG_ICON), false,
                     this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.DATA_DISABLED_ICON), false,
+                    this, UserHandle.USER_ALL);	
             updateSettings();
         }
 
@@ -287,23 +284,13 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
 
     private void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
+	mDataDisabledIcon = Settings.System.getIntForUser(resolver,
+                Settings.System.DATA_DISABLED_ICON, 1,
+                UserHandle.USER_CURRENT) == 1;    
         mConfig = Config.readConfig(mContext);
         setConfiguration(mConfig);
         notifyListeners();
-    }
-	
-	@Override
-    public void onTuningChanged(String key, String newValue) {
-        switch (key) {
-        case DATA_DISABLED_ICON:
-                mDataDisabledIcon = 
-                    TunerService.parseIntegerSwitch(newValue, true);
-                updateTelephony();
-                break;
-            default:
-                break;
-        }
-    }			
+    }	
 
     void setConfiguration(Config config) {
         mConfig = config;

@@ -6270,6 +6270,12 @@ public final class Settings {
          * @hide
          */
         public static final String HIDE_IME_SPACE_ENABLE = "hide_ime_space_enable";    
+	    
+	/**
+         * Whether to display cross sign for a data disabled connection
+         * @hide
+         */
+        public static final String DATA_DISABLED_ICON = "data_disabled_icon";    
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to

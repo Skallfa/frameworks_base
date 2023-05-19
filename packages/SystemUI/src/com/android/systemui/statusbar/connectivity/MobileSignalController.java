@@ -79,7 +79,11 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
     private static final int STATUS_HISTORY_SIZE = 64;
     private static final int IMS_TYPE_WWAN = 1;
     private static final int IMS_TYPE_WLAN = 2;
-    private static final int IMS_TYPE_WLAN_CROSS_SIM = 3;	
+    private static final int IMS_TYPE_WLAN_CROSS_SIM = 3;
+	
+	private static final String DATA_DISABLED_ICON =
+            "system:" + Settings.System.DATA_DISABLED_ICON;
+	
     private final TelephonyManager mPhone;
     private final CarrierConfigTracker mCarrierConfigTracker;
     private final ImsMmTelManager mImsMmTelManager;
@@ -113,6 +117,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
     private int mMobileStatusHistoryIndex;
 
     private boolean mIsVowifiAvailable;
+    private boolean mDataDisabledIcon;	
 
     private final MobileStatusTracker.Callback mMobileCallback =
             new MobileStatusTracker.Callback() {
@@ -250,7 +255,9 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
 
         mImsMmTelManager = ImsMmTelManager.createForSubscriptionId(info.getSubscriptionId());
         mMobileStatusTracker = mobileStatusTrackerFactory.createTracker(mMobileCallback);
-	mProviderModelBehavior = featureFlags.isEnabled(Flags.COMBINED_STATUS_BAR_SIGNAL_ICONS);    
+	mProviderModelBehavior = featureFlags.isEnabled(Flags.COMBINED_STATUS_BAR_SIGNAL_ICONS);
+	    
+	Dependency.get(TunerService.class).addTunable(this, DATA_DISABLED_ICON);    
 
 	Handler mHandler = new Handler();
         SettingsObserver settingsObserver = new SettingsObserver(mHandler);
@@ -284,6 +291,19 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
         setConfiguration(mConfig);
         notifyListeners();
     }
+	
+	@Override
+    public void onTuningChanged(String key, String newValue) {
+        switch (key) {
+        case DATA_DISABLED_ICON:
+                mDataDisabledIcon = 
+                    TunerService.parseIntegerSwitch(newValue, true);
+                updateTelephony();
+                break;
+            default:
+                break;
+        }
+    }			
 
     void setConfiguration(Config config) {
         mConfig = config;
@@ -872,7 +892,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
         mCurrentState.roaming = isRoaming();
         if (isCarrierNetworkChangeActive()) {
             mCurrentState.iconGroup = TelephonyIcons.CARRIER_NETWORK_CHANGE;
-        } else if (isDataDisabled() && !mConfig.alwaysShowDataRatIcon) {
+        } else if (isDataDisabled() && mDataDisabledIcon) {
             if (mSubscriptionInfo.getSubscriptionId() != mDefaults.getDefaultDataSubId()) {
                 mCurrentState.iconGroup = TelephonyIcons.NOT_DEFAULT_DATA;
             } else {

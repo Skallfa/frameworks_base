@@ -312,9 +312,15 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
         }
 
         MarginLayoutParams qqsLP = (MarginLayoutParams) mHeaderQsPanel.getLayoutParams();
-        qqsLP.topMargin = largeScreenHeaderActive || !mUseCombinedQSHeader
-                ? mContext.getResources().getDimensionPixelSize(R.dimen.qqs_layout_margin_top)
-                : SystemBarUtils.getQuickQsOffsetHeight(mContext);
+        if (largeScreenHeaderActive) {
+            qqsLP.topMargin = mContext.getResources()
+                    .getDimensionPixelSize(R.dimen.qqs_layout_margin_top);
+        } else if (!mUseCombinedQSHeader) {
+            qqsLP.topMargin = SystemBarUtils.getQuickQsOffsetHeight(mContext);
+        } else {
+            qqsLP.topMargin = SystemBarUtils.getStatusBarHeight(mContext) + mContext.getResources()
+                    .getDimensionPixelSize(R.dimen.qqs_margin_top);
+        }
         mHeaderQsPanel.setLayoutParams(qqsLP);
 
         updateBatteryMode();

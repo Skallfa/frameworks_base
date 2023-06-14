@@ -41,9 +41,9 @@
         <LinearLayout
             android:id="@+id/volume_dialog_top_container"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="wrap_content" 
             android:clipChildren="false"
+            android:orientation="vertical"          
             android:gravity="right">
 
             <include layout="@layout/volume_ringer_drawer" />
@@ -57,8 +57,8 @@
                 android:gravity="right"
                 android:layout_gravity="right"
                 android:translationZ="@dimen/volume_dialog_elevation"
-                android:clipToPadding="false"
-                android:background="@drawable/rounded_bg_full">
+                android:background="@drawable/rounded_bg_full"
+                android:clipToPadding="false">
                 <com.android.keyguard.AlphaOptimizedImageButton
                     android:id="@+id/ringer_icon"
                     style="@style/VolumeButtons"
@@ -184,7 +184,7 @@
                 style="@style/VolumeButtons"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:tint="?android:attr/colorAccent"
+                android:tint="?androidprv:attr/textColorPrimaryInverse"
                 android:layout_gravity="center"
                 android:soundEffectsEnabled="false" />
         </FrameLayout>

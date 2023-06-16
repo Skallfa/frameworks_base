@@ -16993,6 +16993,18 @@ public final class Settings {
         public static final String[] TRANSIENT_SETTINGS = {
                 CLOCKWORK_HOME_READY,
         };
+	    
+        /**
+         * The amount of time in milliseconds before wifi is turned off
+         * @hide
+         */
+        public static final String WIFI_OFF_TIMEOUT = "wifi_off_timeout";
+
+        /**
+         * The amount of time in milliseconds before bluetooth is turned off
+         * @hide
+         */
+        public static final String BLUETOOTH_OFF_TIMEOUT = "bluetooth_off_timeout";    
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
@@ -18256,24 +18268,13 @@ public final class Settings {
          */
         public static final String REVIEW_PERMISSIONS_NOTIFICATION_STATE =
                 "review_permissions_notification_state";
-	    
-	/**
-         * The amount of time in milliseconds before wifi is turned off
-         * @hide
-         */
-        public static final String WIFI_OFF_TIMEOUT = "wifi_off_timeout";
-
-        /**
-         * The amount of time in milliseconds before bluetooth is turned off
-         * @hide
-         */
-        public static final String BLUETOOTH_OFF_TIMEOUT = "bluetooth_off_timeout";
 
         /**
          * Settings migrated from Wear OS settings provider.
          * @hide
          */
         public static class Wearable {
+		
             /**
              * Whether the user has any pay tokens on their watch.
              * @hide

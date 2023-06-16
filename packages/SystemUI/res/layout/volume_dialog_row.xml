@@ -14,8 +14,7 @@
      limitations under the License.
 -->
 <FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"         
+    xmlns:android="http://schemas.android.com/apk/res/android"         
     android:tag="row"
     android:layout_height="wrap_content"
     android:layout_width="@dimen/volume_dialog_panel_width"
@@ -24,6 +23,7 @@
     android:gravity="center"
     android:paddingTop="@dimen/volume_dialog_ringer_rows_padding"
     android:paddingBottom="@dimen/volume_dialog_ringer_rows_padding"
+    android:background="@drawable/volume_row_rounded_background"         
     android:theme="@style/volume_dialog_theme">
 
     <LinearLayout
@@ -56,7 +56,7 @@
         <FrameLayout
             android:id="@+id/volume_row_slider_frame"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/volume_row_slider_height_aosp">
+            android:layout_height="@dimen/volume_row_slider_height">
             <SeekBar
                 android:id="@+id/volume_row_slider"
                 android:paddingLeft="0dp"
@@ -64,12 +64,12 @@
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
                 android:clickable="true"
-                android:layout_width="@dimen/volume_row_slider_height_aosp"
+                android:layout_width="@dimen/volume_row_slider_height"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:thumb="@null"
                 android:splitTrack="false"
-                android:progressDrawable="@drawable/volume_row_seekbar_aosp"
+                android:progressDrawable="@drawable/volume_row_seekbar"
                 android:background="@null"
                 android:layoutDirection="ltr"
                 android:rotation="270" />

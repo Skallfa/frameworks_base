@@ -18258,16 +18258,16 @@ public final class Settings {
                 "review_permissions_notification_state";
 	    
 	/**
-         * The amount of time in milliseconds before a disconnected Wi-Fi adapter is turned off
+         * The amount of time in milliseconds before wifi is turned off
          * @hide
          */
         public static final String WIFI_OFF_TIMEOUT = "wifi_off_timeout";
 
         /**
-         * The amount of time in milliseconds before a disconnected Bluetooth adapter is turned off
+         * The amount of time in milliseconds before bluetooth is turned off
          * @hide
          */
-        public static final String BLUETOOTH_OFF_TIMEOUT = "bluetooth_off_timeout";    
+        public static final String BLUETOOTH_OFF_TIMEOUT = "bluetooth_off_timeout";
 
         /**
          * Settings migrated from Wear OS settings provider.

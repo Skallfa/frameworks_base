@@ -80,7 +80,6 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.os.Trace;
 import android.os.VibrationEffect;
-import android.os.UserHandle;
 import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.text.InputFilter;
@@ -719,7 +718,7 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
                             R.drawable.ic_volume_notification_mute, true, false);
                 }        
                 addRow(STREAM_ALARM,
-                        R.drawable.ic_volume_alarm, R.drawable.ic_volume_alarm_mute, true, false);
+                        R.drawable.ic_alarm, R.drawable.ic_volume_alarm_mute, true, false);
                 addRow(AudioManager.STREAM_VOICE_CALL,
                         com.android.internal.R.drawable.ic_phone,
                         com.android.internal.R.drawable.ic_phone, false, false);
@@ -910,7 +909,7 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
         row.iconMuteRes = iconMuteRes;
         row.important = important;
         row.defaultStream = defaultStream;
-        row.view = mDialog.getLayoutInflater().inflate(R.layout.volume_dialog_row_aosp, null);
+        row.view = mDialog.getLayoutInflater().inflate(R.layout.volume_dialog_row, null);
         row.view.setId(row.stream);
         row.view.setTag(row);
         row.header = row.view.findViewById(R.id.volume_row_header);
@@ -931,7 +930,7 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
         row.anim = null;
 
         final LayerDrawable seekbarDrawable =
-                (LayerDrawable) mContext.getDrawable(R.drawable.volume_row_seekbar_aosp);
+                (LayerDrawable) mContext.getDrawable(R.drawable.volume_row_seekbar);
 
         final LayerDrawable seekbarProgressDrawable = (LayerDrawable)
                 ((RoundedCornerProgressDrawable) seekbarDrawable.findDrawableByLayerId(

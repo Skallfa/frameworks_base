@@ -11991,6 +11991,12 @@ public final class Settings {
          */
         @Readable
         public static final String WINDOW_IGNORE_SECURE = "window_ignore_secure";
+
+	/**
+         * List of ; separated apps to be hidden from launcher.
+         * @hide
+         */
+        public static final String LAUNCHER_HIDDEN_APPS = "launcher_hidden_apps";    
 	    
 	/**
          * Control whether to hide ADB and Developer settings enable status.

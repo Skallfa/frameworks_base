@@ -162,6 +162,7 @@ import com.android.systemui.fragments.ExtensionFragmentListener;
 import com.android.systemui.fragments.FragmentHostManager;
 import com.android.systemui.fragments.FragmentService;
 import com.android.systemui.keyguard.KeyguardService;
+import com.android.systemui.keyguard.KeyguardSliceProvider;
 import com.android.systemui.keyguard.KeyguardUnlockAnimationController;
 import com.android.systemui.keyguard.KeyguardViewMediator;
 import com.android.systemui.keyguard.ScreenLifecycle;
@@ -3942,6 +3943,42 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces, Tune
     @Override
     public boolean isDeviceInteractive() {
         return mDeviceInteractive;
+    }
+
+    private SbSettingsObserver mSbSettingsObserver = new SbSettingsObserver(mMainHandler);
+    private class SbSettingsObserver extends ContentObserver {
+        SbSettingsObserver(Handler handler) {
+            super(handler);
+        }
+        void observe() {
+            ContentResolver resolver = mContext.getContentResolver();
+            resolver.registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.PULSE_ON_NEW_TRACKS),
+                    true, this, UserHandle.USER_ALL);
+        }
+
+         @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            super.onChange(selfChange, uri);
+            if (uri.equals(Settings.Secure.getUriFor(
+                    Settings.Secure.PULSE_ON_NEW_TRACKS))) {
+                setPulseOnNewTracks();
+            }
+        }
+
+        public void update() {
+        setPulseOnNewTracks();
+         }
+    }
+
+     private void setPulseOnNewTracks() {
+        boolean showPulseOnNewTracks = Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                Settings.Secure.PULSE_ON_NEW_TRACKS, 1,
+                UserHandle.USER_CURRENT) == 1;
+        KeyguardSliceProvider sliceProvider = KeyguardSliceProvider.getAttachedInstance();
+        if (sliceProvider != null) {
+                sliceProvider.setPulseOnNewTracks(showPulseOnNewTracks);
+        }
     }
 
     private final BroadcastReceiver mBannerActionBroadcastReceiver = new BroadcastReceiver() {

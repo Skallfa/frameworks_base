@@ -41,6 +41,7 @@ import com.android.systemui.qs.tiles.CastTile;
 import com.android.systemui.qs.tiles.CellularTile;
 import com.android.systemui.qs.tiles.ColorCorrectionTile;
 import com.android.systemui.qs.tiles.ColorInversionTile;
+import com.android.systemui.qs.tiles.CPUInfoTile;
 import com.android.systemui.qs.tiles.DataSaverTile;
 import com.android.systemui.qs.tiles.DataSwitchTile;
 import com.android.systemui.qs.tiles.DeviceControlsTile;
@@ -127,6 +128,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
     private final Provider<VolumeTile> mVolumeTileProvider;
     private final Provider<SoundTile> mSoundTileProvider;
+    private final Provider<CPUInfoTile> mCPUInfoTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
     private final Provider<CustomTile.Builder> mCustomTileBuilderProvider;
@@ -178,7 +180,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<AntiFlickerTile> antiFlickerTileProvider,
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<VolumeTile> volumeTileProvider,
-            Provider<SoundTile> soundTileProvider) {
+            Provider<SoundTile> soundTileProvider,
+            Provider<CPUInfoTile> cpuInfoTileProvider) {
         mQsHostLazy = qsHostLazy;
         mCustomTileBuilderProvider = customTileBuilderProvider;
 
@@ -226,6 +229,7 @@ public class QSFactoryImpl implements QSFactory {
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mVolumeTileProvider = volumeTileProvider;
         mSoundTileProvider = soundTileProvider;
+        mCPUInfoTileProvider = cpuInfoTileProvider;
     }
 
     /** Creates a tile with a type based on {@code tileSpec} */
@@ -329,7 +333,9 @@ public class QSFactoryImpl implements QSFactory {
             case "volume_panel":
                 return mVolumeTileProvider.get(); 
             case "sound":
-                return mSoundTileProvider.get();    
+                return mSoundTileProvider.get();
+            case "cpuinfo":
+                return mCPUInfoTileProvider.get();    
         }
         // Custom tiles
         if (tileSpec.startsWith(CustomTile.PREFIX)) {

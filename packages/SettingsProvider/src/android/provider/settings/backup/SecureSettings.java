@@ -222,5 +222,6 @@ public class SecureSettings {
         Settings.Secure.QUICK_SETTINGS_TILES_VIBRATE,
         Settings.Secure.SHOW_WIFI_STANDARD_ICON,
         Settings.Secure.IGNORE_AUTH_CONFIRMATION,
+        Settings.Secure.DOZE_FOR_NOTIFICATIONS,
     };
 }

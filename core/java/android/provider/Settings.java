@@ -11997,6 +11997,12 @@ public final class Settings {
          */
         public static final String SHOW_WIFI_STANDARD_ICON = "show_wifi_standard_icon";
 
+	/**
+         * Whether to trigger doze for new notifications
+         * @hide
+         */
+        public static final String DOZE_FOR_NOTIFICATIONS = "doze_for_notifications";    
+
         /**
          * Control whether FLAG_SECURE is ignored for all windows.
          * @hide

@@ -6283,7 +6283,25 @@ public final class Settings {
          * Whether to display cross sign for a data disabled connection
          * @hide
          */
-        public static final String DATA_DISABLED_ICON = "data_disabled_icon";    
+        public static final String DATA_DISABLED_ICON = "data_disabled_icon";
+
+	/**
+         * Whether to add left padding on statusbar
+         * @hide
+         */
+        public static final String STATUSBAR_LEFT_PADDING = "statusbar_left_padding";
+
+        /**
+         * Whether to add right padding on statusbar
+         * @hide
+         */
+        public static final String STATUSBAR_RIGHT_PADDING = "statusbar_right_padding";
+
+        /**
+         * Whether to add top padding on statusbar
+         * @hide
+         */
+        public static final String STATUSBAR_TOP_PADDING = "statusbar_top_padding";    
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to

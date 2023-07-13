@@ -6283,7 +6283,13 @@ public final class Settings {
          * Whether to display cross sign for a data disabled connection
          * @hide
          */
-        public static final String DATA_DISABLED_ICON = "data_disabled_icon"; 
+        public static final String DATA_DISABLED_ICON = "data_disabled_icon";
+
+	/**
+         * Enable and Disable Dual Tone Colors QsPanel
+         * @hide
+         */
+        public static final String QS_DUAL_TONE = "qs_dual_tone";    
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
